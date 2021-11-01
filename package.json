@@ -1,0 +1,31 @@
+{
+  "name": "isaac-floor-back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s3-db01/ISAAC-floor-back-end.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/s3-db01/ISAAC-floor-back-end/issues"
+  },
+  "homepage": "https://github.com/s3-db01/ISAAC-floor-back-end#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mysql2": "^2.3.2",
+    "sequelize": "^6.8.0"
+  },
+  "devDependencies": {
+    "dotenv": "^10.0.0",
+    "nodemon": "^2.0.14",
+    "sequelize-cli": "^6.2.0"
+  }
+}
