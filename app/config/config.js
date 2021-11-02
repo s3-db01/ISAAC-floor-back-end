@@ -1,5 +1,10 @@
 console.log(process.cwd()+ '/.env');
-require('dotenv').config(process.cwd()+ '/.env'); //{path: '../.env'}
+if(__dirname == process.cwd()) {
+    require('dotenv').config({path: '../.env'});
+  }else{
+    require('dotenv').config();
+  }
+  //process.cwd()+ '/.env'); //{path: '../.env'}
 module.exports = {
     development: {
         username: process.env.DB_USER,
