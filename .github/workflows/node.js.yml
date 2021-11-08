@@ -10,13 +10,6 @@ on:
     branches: [ main ]
 
 jobs:
-  container:
-    runs-on: ubuntu-latest
-    container: jjuless/isaac-floor-database:latest
-    steps:
-      - run: |
-          echo This runs in the container
-        name: Run in container
   build:
 
     runs-on: windows-latest
