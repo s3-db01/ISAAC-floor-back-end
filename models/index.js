@@ -8,22 +8,22 @@ const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + './../config/config.js')[env];
 const db = {};
 
-let sequelize;
-if (config.use_env_variable) {
-  console.log('Using environment variable');
-  //sequelize = new Sequelize(process.env[config.use_env_variable], config);
-  sequelize = new Sequelize(process.env[config.use_env_variable], {
-    host: 'localhost',
-    dialect: 'mysql'
-  });
-} else {
-  console.log('im triggered');
-  //sequelize = new Sequelize(config.database, config.username, config.password, config);
-  sequelize = new Sequelize(config.database, config.username, config.password, {
-    host: 'localhost',
-    dialect: 'mysql'
-  });
-}
+// let sequelize;
+// if (config.use_env_variable) {
+//   console.log('Using environment variable');
+//   //sequelize = new Sequelize(process.env[config.use_env_variable], config);
+//   sequelize = new Sequelize(process.env[config.use_env_variable], {
+//     host: 'localhost',
+//     dialect: 'mysql'
+//   });
+// } else {
+//   console.log('im triggered');
+//   //sequelize = new Sequelize(config.database, config.username, config.password, config);
+//   sequelize = new Sequelize(config.database, config.username, config.password, {
+//     host: 'localhost',
+//     dialect: 'mysql'
+//   });
+// }
 
 fs
   .readdirSync(__dirname)
