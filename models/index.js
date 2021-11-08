@@ -10,6 +10,7 @@ const db = {};
 
 let sequelize;
 if (config.use_env_variable) {
+  console.log('Using environment variable');
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
   console.log('im triggered');
