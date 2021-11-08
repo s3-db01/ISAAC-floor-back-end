@@ -28,7 +28,7 @@ jobs:
         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         DB_DATABASE: ${{ secrets.DB_DATABASE }}
         DB_PORT: ${{ secrets.DB_PORT }}
-        DB_DIALECT: ${{ secrets.DB_DIALECT }}
+        DB_DIALECT: 'mysql'
         PORT: ${{ secrets.PORT }}
         DB_DATABASE_TEST: ${{ secrets.DB_DATABASE_TEST }}
       uses: actions/setup-node@v2
