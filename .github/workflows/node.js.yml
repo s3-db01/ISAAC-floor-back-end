@@ -37,14 +37,13 @@ jobs:
         cache: 'npm'
     - run:|
         touch .env
-
-        echo DB_HOST=${{ secrets.DB_HOST }} >> .env
-        echo DB_USER=${{ secrets.DB_USER }} >> .env
-        echo DB_PASSWORD=${{ secrets.DB_PASSWORD }} >> .env
-        echo DB_DATABASE=${{ secrets.DB_DATABASE }} >> .env
-        echo DB_PORT=${{ secrets.DB_PORT }} >> .env
-        echo DB_DIALECT=${{ secrets.DB_DIALECT }} >> .env
-        echo PORT=${{ secrets.PORT }} >> .env
+        echo DB_HOST= ${{ secrets.DB_HOST }} >> .env
+        echo DB_USER= ${{ secrets.DB_USER }} >> .env
+        echo DB_PASSWORD= ${{ secrets.DB_PASSWORD }} >> .env
+        echo DB_DATABASE= ${{ secrets.DB_DATABASE }} >> .env
+        echo DB_PORT= ${{ secrets.DB_PORT }} >> .env
+        echo DB_DIALECT= ${{ secrets.DB_DIALECT }} >> .env
+        echo PORT= ${{ secrets.PORT }} >> .env
         echo DB_DATABASE_TEST= ${{ secrets.DB_DATABASE_TEST }} >> .env
         cat .env
     - run: npm ci
