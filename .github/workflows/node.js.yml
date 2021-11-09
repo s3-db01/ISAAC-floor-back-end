@@ -40,6 +40,9 @@ jobs:
     - run: npm run build --if-present
     - run: docker-compose up -d ISAAC-floor-database
 #    - run: docker run --link ${DIALECT}:db -e CHECK_PORT=${SEQ_PORT::-1} -e CHECK_HOST=db --net cli_default giorgos/takis
+    - uses: jakejarvis/wait-action@master
+    - run: sleep 120s
+    - shell: bash
     - run: npm test
 
 # - run: npm install sequelize@${{ matrix.sequelize-version }}
