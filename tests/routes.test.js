@@ -1,4 +1,5 @@
 const request = require('supertest');
+const { sequelize } = require('../models');
 const app = require('../server');
 
 describe('Post Endpoints', () => {
@@ -48,3 +49,8 @@ describe('Delete Endpoints', () =>{
         expect(res.statusCode).toEqual(200)
     })
 })
+
+afterAll(done => {
+    app.close();
+    done();
+});
