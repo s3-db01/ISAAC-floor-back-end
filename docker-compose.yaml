@@ -11,5 +11,5 @@ services:
     volumes:
       - ./sql-scripts:/docker-entrypoint-initdb.d
       
- networks:
+networks:
   ISAAC-network:     
