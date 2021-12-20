@@ -1,0 +1,226 @@
+openapi: '3.0.0'
+info:
+  title: ISAAC floor API
+  version: '1.0'
+servers:
+  - url: localhost:3000/api
+
+paths:
+  /floors/{id}:
+    get:
+      summary: Get Floor
+      description: Gets a floor by supplierd ID in the URL.
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+            minimum: 1
+          required: true
+          description: Numeric ID of the floor to get.
+      responses:
+        '200':
+          description: Successfull GET response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Floor'
+        '404':
+          $ref: '#/components/responses/NotFound'
+          
+        '5XX':
+            $ref: '#/components/responses/ServerError'
+
+    put:
+      summary: Update Floor
+      description: Updates a floor by floor ID in the URL.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+          minimum: 1
+        required: true
+        description: Numeric ID of the floor to update.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Floor'
+      responses:
+        '200':
+          description: Successfull PUT response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+
+    delete:
+      summary: Delete Floor
+      description: Deletes a floor by floor ID in ther URL.
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+          minimum: 1
+        required: true
+        description: Numeric ID of the floor to delete.
+      responses:
+        '200':
+          description: Successfull DELETE response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+
+  /floors:
+    get:
+      summary: Get floors list.
+      description: Get all the floors in a list.
+      responses:
+        '200':
+          description: Successfull GET response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Floors'
+
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+
+    post:
+      summary: Create Floor
+      description: Creates a floor with the parameters specified in the request body.
+      requestBody:
+        description: This is the floor object.
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              $ref: '#/components/schemas/Floor'
+
+      responses:
+        '201':
+          description: Successfull POST response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Floor'
+                type: object
+
+        '400':
+          $ref: '#/components/responses/InvalidRequest'
+
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+    
+    delete:
+      summary: Delete all Floors
+      description: Deletes all the floors in the database, there is no undoing this action.
+      responses:
+        '200':
+          description: Successfull DELETE response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+
+        '5XX':
+          $ref: '#/components/responses/ServerError'
+
+
+components:
+  schemas:
+    Floors:
+      description: Array of floor information
+      type: array
+      items: 
+        $ref: '#/components/schemas/Floor'
+
+    Floor:
+      description: Model containing floor information
+      title: Floor
+      required:
+        - floor_number
+        - max_x_coordinate
+        - max_y_coordinate
+      type: object
+      properties:
+        id: 
+          type: integer
+          example: 1
+        
+        floor_number:
+          type: integer
+          example: 3
+        
+        max_x_coordinate:
+          type: integer
+          example: 33
+        
+        max_y_coordinate:
+          type: integer
+          example: 23
+
+        createdAt:
+          type: string
+          example: 2021-11-17T13:13:56.000Z
+
+        updatedAt:
+          type: string
+          example: 2021-11-17T13:13:56.000Z
+
+  responses:
+    NotFound:
+      description: The resource was not found with the given ID.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:   
+              message:
+                type: string
+    
+    ServerError:
+      description: The server encountered an error.
+      content: 
+        application/json:
+          schema:
+            type: object
+            properties:   
+              message:
+                type: string
+
+    InvalidRequest:
+      description: The request is not valid.
+      content: 
+        application/json:
+          schema:
+            type: object
+            properties:   
+              message:
+                type: string
