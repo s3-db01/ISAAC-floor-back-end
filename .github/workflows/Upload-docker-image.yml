@@ -77,7 +77,7 @@ jobs:
             context: ./
             file: ./Dockerfile
             push: true
-            tags: jjuless/ISAAC-floor-database:latest
+            tags: jjuless/isaac-floor-database:latest
 
         - name: Image digest
           run: echo ${{ steps.docker_build.outputs.digest }}
